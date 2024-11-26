@@ -85,13 +85,13 @@ from decouple import config
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('POSTGRES_DATABASE'),
-        'USER': config('POSTGRES_USER'),
-        'PASSWORD': config('POSTGRES_PASSWORD'),
-        'HOST': config('POSTGRES_HOST'),
-        'PORT': config('POSTGRES_PORT', default='5432'),
+        'NAME': env('POSTGRES_DB', default='railway'),  # This is PGDATABASE / POSTGRES_DB
+        'USER': env('POSTGRES_USER', default='postgres'),  # This is PGUSER
+        'PASSWORD': env('POSTGRES_PASSWORD'),  # This is PGPASSWORD
+        'HOST': env('PGHOST', default='localhost'),  # This is PGHOST
+        'PORT': env('PGPORT', default='5432'),  # This is PGPORT
         'OPTIONS': {
-            'sslmode': config('POSTGRES_SSLMODE', default='require')
+            'sslmode': env('POSTGRES_SSLMODE', default='require'),  # SSL mode for security
         },
     }
 }
