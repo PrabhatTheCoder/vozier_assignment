@@ -90,16 +90,17 @@ environ.Env.read_env()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('POSTGRES_DB', default='railway'),  # This is PGDATABASE / POSTGRES_DB
-        'USER': env('POSTGRES_USER', default='postgres'),  # This is PGUSER
-        'PASSWORD': env('POSTGRES_PASSWORD'),  # This is PGPASSWORD
-        'HOST': env('PGHOST', default='localhost'),  # This is PGHOST
-        'PORT': env('PGPORT', default='5432'),  # This is PGPORT
+        'NAME': env('POSTGRES_DB', default='railway'),  # PGDATABASE / POSTGRES_DB
+        'USER': env('POSTGRES_USER', default='postgres'),  # PGUSER
+        'PASSWORD': env('POSTGRES_PASSWORD'),  # Password for PostgreSQL
+        'HOST': env('POSTGRES_HOST', default='localhost'),  # Database host
+        'PORT': env('POSTGRES_PORT', default='37007'),  # PGPORT
         'OPTIONS': {
             'sslmode': env('POSTGRES_SSLMODE', default='require'),  # SSL mode for security
         },
     }
 }
+
 
 
 
