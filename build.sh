@@ -1,12 +1,23 @@
 #!/bin/bash
 
-# Build the project
-echo "Building the project..."
-python3.9 -m pip install -r requirements.txt
+# Exit on error
+set -e
 
-echo "Make Migration..."
-python3.9 manage.py makemigrations --noinput
-python3.9 manage.py migrate --noinput
+# Debugging: Print Python version
+echo "Python version: $(python3.9 --version)"
 
-echo "Collect Static..."
-python3.9 manage.py collectstatic --noinput --clear
+# Ensure pip is available
+echo "Ensuring pip is installed..."
+python3.9 -m ensurepip --upgrade
+
+# Install dependencies
+echo "Installing dependencies..."
+pip install -r requirements.txt
+
+# Collect static files
+echo "Collecting static files..."
+python manage.py collectstatic --noinput --clear -c
+
+# Apply migrations (optional)
+echo "Applying database migrations..."
+python manage.py migrate
