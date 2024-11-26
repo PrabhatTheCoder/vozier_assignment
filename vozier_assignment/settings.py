@@ -81,6 +81,11 @@ WSGI_APPLICATION = 'vozier_assignment.wsgi.application'
 
 
 from decouple import config
+import environ
+
+# Initialize environment variables
+env = environ.Env()
+environ.Env.read_env() 
 
 DATABASES = {
     'default': {
