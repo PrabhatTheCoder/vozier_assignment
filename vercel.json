@@ -9,7 +9,7 @@
             "src": "vozier_assignment/wsgi.py",
             "use": "@vercel/python",
             "config": {
-                "runtime": "python3.9",
+                "runtime": "python3.10",
                 "maxLambdaSize": "15mb"
             }
         }
