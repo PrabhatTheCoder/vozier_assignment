@@ -27,10 +27,14 @@ python3.9 -c "import django; print(django.get_version())"
 echo "Collecting static files..."
 python3.9 manage.py collectstatic --noinput --clear -c
 
-# Apply migrations (optional)
+# Make migrations (this step creates migration files)
+echo "Making migrations..."
+python3.9 manage.py makemigrations
+
+# Apply migrations (this step applies the migrations to the database)
 echo "Applying database migrations..."
 python3.9 manage.py migrate
 
-
+# Create a placeholder file (optional)
 mkdir -p dist
 touch dist/placeholder.txt
